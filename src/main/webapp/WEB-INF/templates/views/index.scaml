@@ -1,0 +1,13 @@
+.row
+  .col-lg-12
+    .page-header
+      %h1
+        Search
+.row
+  .col-lg-6
+    %form(action="/search" method="get")
+      .input-group
+        %input(class="form-control" type="text" size="50" name="query" id="query")
+        .input-group-btn
+          %button(class="btn btn-default" type="submit") Search
+      

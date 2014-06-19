@@ -1,0 +1,83 @@
+-@ val result: depsearch.common.model.DependencyResult
+- val dep = result.dependency
+
+.row
+  .col-lg-12
+    .page-header
+      %h2
+        Search
+.row
+  .col-lg-8
+    %form(action="/search" method="get")
+      .input-group
+        %input(class="form-control" type="text" size="50" name="query" id="query")
+        .input-group-btn
+          %button(class="btn btn-default" type="submit") Search
+      
+.row
+  .col-lg-8
+    %h2
+      #{dep.org} #{dep.group}
+      
+    .description
+      - for (d <- dep.description)
+        .desc
+          #{d.text}
+        %br
+        .homepage
+          %a(href="#{d.homepage}")
+            #{d.homepage}
+      
+    - for(l <- dep.license)
+      .license
+        %h3 License
+        %a(href="#{l.url}")
+          #{l.name}
+          
+    .ivy
+      %h3 ivy
+      %pre &lt;dependency org="#{dep.org}" name="#{dep.group}" rev="#{dep.version.version}" /&gt;
+    .sbt
+      %h3 sbt
+      %pre "#{dep.org}" % "#{dep.group}" % "#{dep.version.version}"
+
+    %h3 Versions
+    %table(class="table table-striped table-hover")
+      %thead
+        %tr
+          %th
+            version
+          %th
+            branch
+          %th
+            status
+      %tbody
+        - for(v <- result.versions)
+          %tr
+            %td
+              #{v.version}
+            %td
+              #{v.branch}
+            %td
+              #{v.status}
+              
+    %h3 Dependencies
+    %table(class="table table-striped table-hover")
+      %thead
+        %tr
+          %th
+            org
+          %th
+            group
+          %th
+            version
+      %tbody
+        - for(d <- dep.dependencies)
+          %tr
+            %td
+              #{d.org}
+            %td
+              %a(href="/d/#{d.org}/#{d.group}")
+                #{d.group}
+            %td
+              #{d.rev}
