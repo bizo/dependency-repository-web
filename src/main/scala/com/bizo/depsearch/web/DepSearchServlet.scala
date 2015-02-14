@@ -4,12 +4,17 @@ import com.bizo.app.TemplateAppStack
 import depsearch.db.DependencyDB
 
 class DepSearchServlet(db: DependencyDB) extends TemplateAppStack {
+  
+  def user(): Option[String] = {
+    Option(request.getHeader("X-Forwarded-User"))
+  }
+  
   get("/") {
     contentType = "text/html"
     
-    scaml("/index")
+    scaml("/index", "user" -> user)
   }
-  
+
   get("/search") {
     val results = db.search(params("query"), 500)
     
@@ -18,7 +23,7 @@ class DepSearchServlet(db: DependencyDB) extends TemplateAppStack {
       redirect(s"/d/${d.org}/${d.group}")
     } else {
       contentType = "text/html"      
-      scaml("/search-results", "results" -> results)
+      scaml("/search-results", "results" -> results, "user" -> user)
     }
   }
   
@@ -27,6 +32,6 @@ class DepSearchServlet(db: DependencyDB) extends TemplateAppStack {
 
     val result = db.dependency(params("org"), params("group"), 5).get
     
-    scaml("dependency", "result" -> result)
+    scaml("dependency", "result" -> result, "user" -> user)
   }
 }

@@ -1,5 +1,6 @@
 -@ var body:String
 -@ var title: String = "Dependency Repository"
+-@ var user: Option[String] = None
 
 !!!5
 %html
@@ -25,19 +26,15 @@
           %a(class="navbar-brand" href="/")
             %img(height="24px" src="/assets/images/robot-head-white.png")
             Dependency Search
-        %div(class="nav navbar-nav")
-          %li
-            %a(href="/")
-              Home
-          %li(class="dropdown")
-            %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
-              Drop Down
-              %b(class="caret")
-            %ul(class="dropdown-menu")
-              %li
-                %a(target="_blank" href="#") One
-                %a(target="_blank" href="#") Two
-                %a(target="_blank" href="#") Three
+        -if (user.isDefined)
+          %div(class="nav navbar-nav navbar-right")
+            %li(class="dropdown")
+              %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                #{user.get}
+                %b(class="caret")
+              %ul(class="dropdown-menu")
+                %li
+                  %a(href="/oauth2/sign_in") signout
 
     %div(class="container app-main-container")
       != body
