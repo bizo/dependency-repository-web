@@ -1,5 +1,7 @@
 -@ val result: depsearch.common.model.DependencyResult
+-@ val downstream: Seq[depsearch.common.model.DependencyGroup]
 - val dep = result.dependency
+
 
 .row
   .col-lg-12
@@ -60,7 +62,8 @@
               #{v.branch}
             %td
               #{v.status}
-              
+
+    %hr              
     %h3 Dependencies
     %table(class="table table-striped table-hover")
       %thead
@@ -81,3 +84,22 @@
                 #{d.group}
             %td
               #{d.rev}
+
+    -if (! downstream.isEmpty)
+      %hr
+      %h3 Downstream
+      %table(class="table table-striped table-hover")
+        %thead
+          %tr
+            %th
+              org
+            %th
+              group
+        %tbody
+          - for(d <- downstream)
+            %tr
+              %td
+                #{d.org}
+              %td
+                %a(href="/d/#{d.org}/#{d.group}")
+                  #{d.group}

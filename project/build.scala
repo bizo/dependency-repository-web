@@ -10,7 +10,7 @@ import com.typesafe.sbteclipse.plugin.EclipsePlugin._
 object TemplateAppBuild extends Build {
   val Organization = "com.bizo"
   val Name = "dependency-repository-web"
-  val Version = "0.0.1"
+  val Version = "0.0.2"
   val ScalaVersion = "2.10.3"
   val ScalatraVersion = "2.3.0"
 
@@ -24,9 +24,7 @@ object TemplateAppBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
       libraryDependencies ++= Seq(
-        "com.bizo" %% "dependency-repository-indexer" % "0.0.2",
-        "com.google.apis" % "google-api-services-oauth2" % "v2-rev67-1.17.0-rc",
-        "com.google.http-client" % "google-http-client-jackson" % "1.17.0-rc",
+        "com.bizo" %% "dependency-repository-indexer" % "0.0.2.3",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",

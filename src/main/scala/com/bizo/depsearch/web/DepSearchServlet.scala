@@ -32,6 +32,8 @@ class DepSearchServlet(db: DependencyDB) extends TemplateAppStack {
 
     val result = db.dependency(params("org"), params("group"), 5).get
     
-    scaml("dependency", "result" -> result, "user" -> user)
+    val downstream = db.downstream(params("org"), params("group"))
+    
+    scaml("dependency", "result" -> result, "downstream" -> downstream, "user" -> user)
   }
 }
