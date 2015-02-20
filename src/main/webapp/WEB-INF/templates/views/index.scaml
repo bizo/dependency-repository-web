@@ -1,7 +1,7 @@
 -@ val stats: depsearch.common.model.IndexStats
 -@ val recent: Seq[depsearch.common.model.Dependency]
 
--val dateFormatter = new java.text.SimpleDateFormat("EEE, MMM dd hh:mm:ss a z")
+- val dateFormatter = new java.text.SimpleDateFormat("MMM dd hh:mm:ss a yyyy z")
 
 :css
   .stats {
@@ -38,9 +38,10 @@
       organizations.
     -if (stats.lastUpdated.isDefined)
       .lastUpdated
-        Last updated
-        %span(class="text-primary")
-          #{dateFormatter.format(stats.lastUpdated.get)}
+        %small
+          Last updated
+          #{org.apache.commons.lang3.time.DurationFormatUtils.formatDuration((new java.util.Date).getTime - stats.lastUpdated.get.getTime, "m")}
+          minutes ago
 
 .row
   .col-lg-6

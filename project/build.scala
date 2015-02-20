@@ -25,6 +25,7 @@ object TemplateAppBuild extends Build {
       resolvers += Classpaths.typesafeReleases,
       libraryDependencies ++= Seq(
         "com.bizo" %% "dependency-repository-indexer" % "0.0.2.4",
+        "org.apache.commons" % "commons-lang3" % "3.3.2",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "com.google.guava" % "guava" % "18.0",
