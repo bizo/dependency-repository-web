@@ -12,7 +12,7 @@ class DepSearchServlet(db: DependencyDB) extends TemplateAppStack {
   get("/") {
     contentType = "text/html"
     
-    scaml("/index", "user" -> user)
+    scaml("/index", "user" -> user, "stats" -> db.stats)
   }
 
   get("/search") {

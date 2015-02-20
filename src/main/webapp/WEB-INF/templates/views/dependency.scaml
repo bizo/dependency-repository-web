@@ -74,6 +74,8 @@
             group
           %th
             version
+          %th
+            conf
       %tbody
         - for(d <- dep.dependencies)
           %tr
@@ -84,6 +86,8 @@
                 #{d.group}
             %td
               #{d.rev}
+            %td
+              #{d.conf}
 
     -if (! downstream.isEmpty)
       %hr

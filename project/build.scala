@@ -10,7 +10,7 @@ import com.typesafe.sbteclipse.plugin.EclipsePlugin._
 object TemplateAppBuild extends Build {
   val Organization = "com.bizo"
   val Name = "dependency-repository-web"
-  val Version = "0.0.2"
+  val Version = "0.0.3"
   val ScalaVersion = "2.10.3"
   val ScalatraVersion = "2.3.0"
 
@@ -27,7 +27,9 @@ object TemplateAppBuild extends Build {
         "com.bizo" %% "dependency-repository-indexer" % "0.0.2.3",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+        "com.google.guava" % "guava" % "18.0",
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+        "com.google.code.findbugs" % "jsr305" % "1.3.9" % "compile",  
         "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
         "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
         "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))

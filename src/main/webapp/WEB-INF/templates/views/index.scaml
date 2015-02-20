@@ -1,3 +1,15 @@
+-@ val stats: depsearch.common.model.IndexStats
+-val dateFormatter = new java.text.SimpleDateFormat("EEE, MMM dd hh:mm:ss a z")
+
+:css
+  .stats {
+    margin-top: 10px
+  }
+  
+  .lastUpdated {
+    margin-top: 10px
+  }
+
 .row
   .col-lg-12
     .page-header
@@ -11,3 +23,19 @@
         .input-group-btn
           %button(class="btn btn-default" type="submit") Search
       
+  .col-lg-6
+    .stats
+      %span(class="text-primary")
+        #{stats.numberOfDependencies}
+      total versions across
+      %span(class="text-primary")
+        #{stats.numberOfDependencies}
+      artifacts and
+      %span(class="text-primary")      
+        #{stats.numberOfOrgs}
+      organizations.
+    -if (stats.lastUpdated.isDefined)
+      .lastUpdated
+        Last updated
+        %span(class="text-primary")
+          #{dateFormatter.format(stats.lastUpdated.get)}
