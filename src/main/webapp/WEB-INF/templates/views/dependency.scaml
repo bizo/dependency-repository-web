@@ -1,7 +1,7 @@
 -@ val result: depsearch.common.model.DependencyResult
 -@ val downstream: Seq[depsearch.common.model.DependencyGroup]
 - val dep = result.dependency
-
+- val dateFormatter = new java.text.SimpleDateFormat("MMM dd hh:mm:ss a yyyy z")
 
 .row
   .col-lg-12
@@ -53,15 +53,20 @@
             branch
           %th
             status
+          %th
+            publication
       %tbody
         - for(v <- result.versions)
           %tr
             %td
-              #{v.version}
+              #{v.version.version}
             %td
-              #{v.branch}
+              #{v.version.branch}
             %td
-              #{v.status}
+              #{v.version.status}
+            %td
+              -if (v.publication.isDefined)
+                #{dateFormatter.format(v.publication.get)}
 
     %hr              
     %h3 Dependencies
