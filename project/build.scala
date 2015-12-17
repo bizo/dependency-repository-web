@@ -12,7 +12,7 @@ object TemplateAppBuild extends Build {
   val Name = "dependency-repository-web"
   val Version = "0.0.4"
   val ScalaVersion = "2.10.3"
-  val ScalatraVersion = "2.3.0"
+  val ScalatraVersion = "2.4.0.RC3"
 
   lazy val project = Project (
     "dependency-repository-web",
