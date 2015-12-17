@@ -10,7 +10,7 @@ import com.typesafe.sbteclipse.plugin.EclipsePlugin._
 object TemplateAppBuild extends Build {
   val Organization = "com.bizo"
   val Name = "dependency-repository-web"
-  val Version = "0.0.4"
+  val Version = "0.0.5"
   val ScalaVersion = "2.10.6"
   val ScalatraVersion = "2.4.0.RC3"
 
