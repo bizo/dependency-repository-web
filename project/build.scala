@@ -24,7 +24,7 @@ object TemplateAppBuild extends Build {
       scalaVersion := ScalaVersion,
       resolvers += Classpaths.typesafeReleases,
       libraryDependencies ++= Seq(
-        "com.bizo" %% "dependency-repository-indexer" % "0.0.2.4",
+        "com.bizo" %% "dependency-repository-indexer" % "0.0.3",
         "org.apache.commons" % "commons-lang3" % "3.3.2",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
